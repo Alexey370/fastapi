@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class STaskAdd(BaseModel):
@@ -7,6 +7,8 @@ class STaskAdd(BaseModel):
 
 class STask_read(STaskAdd):
     id: int
+
+    model_config = ConfigDict(from_attributes=True) #«Разреши создавать эту модель не только из dict, но и из объектов с атрибутами (например, SQLAlchemy ORM).»
 
 class STask_Id(BaseModel):
     ok: bool = True
